@@ -33,3 +33,8 @@ def create_actor():
     db.session.commit()
 
     return actor_schema.dump(actor)
+
+@actors_router.delete('/<actor_id>')
+def delete_actor(actor_id):
+    actor = Actor.query.delete(actor_id)
+    return actors_schema.dump(actor)

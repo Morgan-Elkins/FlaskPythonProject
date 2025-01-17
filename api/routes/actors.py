@@ -8,8 +8,12 @@ from api.schemas.actor import actor_schema, actors_schema
 #Create module to insert into flask app
 actors_router = Blueprint('actors', __name__, url_prefix='/actors')
 
-# GET requests to a specific document in collection return a single actor
+@actors_router.get('/')
+def read_all_actors():
+    actors = Actor.query.all()
+    return actors_schema.dump(actors)
 
+# GET requests to a specific document in collection return a single actor
 @actors_router.get('/<actor_id>')
 def read_actor(actor_id):
     actor = Actor.query.get(actor_id)

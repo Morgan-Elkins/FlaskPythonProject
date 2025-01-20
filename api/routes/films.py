@@ -19,7 +19,7 @@ def read_film(film_id):
     film = Film.query.get(film_id)
     return film_schema.dump(film)
 
-# TOTEST ->
+# TOTEST -> {"title": "TESTFILMNAME", "release_year": 2025, "length": 100, "rating": "PG"}
 @films_router.post('/')
 def create_film():
     film_data = request.json

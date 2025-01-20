@@ -41,7 +41,7 @@ def delete_actor(actor_id):
     actor = Actor.query.get(actor_id)
 
     if actor == None:
-        return f"An actor of ID {actor_id} does not exist" , 404
+        return f"An actor of ID {actor_id} does not exist, so cannot be deleted" , 404
 
     db.session.delete(actor)
     db.session.commit()
@@ -53,7 +53,7 @@ def update_actor(actor_id):
     actor_data = request.json
 
     if actor == None:
-        return f"An actor of ID {actor_id} does not exist" , 404
+        return f"An actor of ID {actor_id} does not exist, so cannot be updated" , 404
 
     if (actor_data.get("first_name") != "" and actor_data.get("first_name") != None):
         actor.first_name = actor_data.get("first_name")

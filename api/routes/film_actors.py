@@ -18,7 +18,7 @@ def read_all_film_actors():
     return actors_schema.dump(filaActors)
 
 # GET requests to return all films be an actor
-# localhost:5000/api/film_actors/get_films/500
+# localhost:5000/api/film_actors/get_films/5
 @film_actors_router.get('/get_films/<actor_id>')
 def read_films_by_actor(actor_id):
     actors = Actor.query.get(actor_id)

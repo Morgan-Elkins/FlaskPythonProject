@@ -48,28 +48,12 @@ def update_actor(actor_id):
     actor = Actor.query.get(actor_id)
     actor_data = request.json
 
-    # print(actor_data)
-    # print(actor.first_name)
-
-    # try:
-    #     actor_schema.load(actor_data)
-    # except ValidationError as err:
-    #     return jsonify(err.messages), 400
-
-    print(actor_data)
-
-    # new_actor = Actor()
-    # new_actor.actor_id = actor.actor_id
-    # new_actor.first_name = actor.first_name
-    # new_actor.last_name = actor.last_name
     if (actor_data.get("first_name") != "" and actor_data.get("first_name") != None):
         actor.first_name = actor_data.get("first_name")
         print("Updated First")
     if (actor_data.get("last_name") != "" and actor_data.get("last_name") != None):
         actor.last_name = actor_data.get("last_name")
         print("Updated Last")
-
-    print(actor.actor_id, actor.first_name, actor.last_name)
 
     db.session.add(actor)
     db.session.commit()

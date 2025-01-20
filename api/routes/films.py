@@ -34,3 +34,15 @@ def create_film():
     db.session.commit()
 
     return film_schema.dump(film)
+
+# TOTEST -> localhost:5000/api/films/1001 (if done create before)
+@films_router.delete('/<film_id>')
+def delete_film(film_id):
+    film = Film.query.get(film_id)
+
+    if film == None:
+        return f"An film of ID {film_id} does not exist" , 404
+
+    db.session.delete(film)
+    db.session.commit()
+    return film_schema.dump(film)

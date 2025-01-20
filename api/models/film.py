@@ -1,4 +1,5 @@
 from api.models import db
+# from api.models.film_actor import FilmActor
 
 # A model for our actor table
 class Film(db.Model):
@@ -10,4 +11,4 @@ class Film(db.Model):
     length = db.Column(db.Integer, nullable=False)
     rating = db.Column(db.String(255), nullable=False)
 
-    # actor = db.relationship('Actor', secondary='actor_film', back_populates='Film')
+    actor = db.relationship('Actor', secondary='film_actor', back_populates='film')

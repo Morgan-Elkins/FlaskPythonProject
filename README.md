@@ -84,7 +84,7 @@ localhost:5000/api/films/
 localhost:5000/api/films/1001
 ```
 ```json
-{"first_name": "UPDATEDNAMETEST"}
+{"title": "TESTFILMNAME2", "length": 120, "rating": "PG-13"}
 ```
 #### Delete an film by ID, using DELETE
 ```commandline

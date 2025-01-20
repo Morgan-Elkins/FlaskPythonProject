@@ -39,9 +39,13 @@ def create_actor():
 @actors_router.delete('/<actor_id>')
 def delete_actor(actor_id):
     actor = Actor.query.get(actor_id)
+
+    if actor == None:
+        return f"An actor of ID {actor_id} does not exist" , 404
+
     db.session.delete(actor)
     db.session.commit()
-    return actors_schema.dump("")
+    return actor_schema.dump(actor)
 
 @actors_router.patch('/<actor_id>')
 def update_actor(actor_id):
@@ -50,13 +54,9 @@ def update_actor(actor_id):
 
     if (actor_data.get("first_name") != "" and actor_data.get("first_name") != None):
         actor.first_name = actor_data.get("first_name")
-        print("Updated First")
     if (actor_data.get("last_name") != "" and actor_data.get("last_name") != None):
         actor.last_name = actor_data.get("last_name")
-        print("Updated Last")
 
     db.session.add(actor)
     db.session.commit()
-
-    dump_data = actors_schema.dump("")
-    return dump_data
+    return actor_schema.dump(actor)

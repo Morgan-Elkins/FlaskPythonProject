@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 from marshmallow import ValidationError
 
 from api.models import db
@@ -63,3 +63,9 @@ def update_actor(actor_id):
     db.session.add(actor)
     db.session.commit()
     return actor_schema.dump(actor)
+
+@actors_router.route('/home/')
+def home():
+    page = request.args.get('page', 1, type=int)  # Default to page 1 if not specified
+    actors = Actor.query.paginate(page=page, per_page=10, error_out=False)
+    return render_template('index.html', items=actors.items, pagination=actors)

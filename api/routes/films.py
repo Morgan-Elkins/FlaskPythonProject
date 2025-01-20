@@ -46,3 +46,32 @@ def delete_film(film_id):
     db.session.delete(film)
     db.session.commit()
     return film_schema.dump(film)
+
+@films_router.patch('/<film_id>')
+def update_film(film_id):
+    film = Film.query.get(film_id)
+    film_data = request.json
+
+    print(film_data)
+
+    if film == None:
+        return f"An film of ID {film_id} does not exist" , 404
+
+    if (film_data.get("title") != "" and film_data.get("title") != None):
+        film.title = film_data.get("title")
+        print("TITLE")
+    if (film_data.get("release_year") != "" and film_data.get("release_year") != None):
+        film.release_year = film_data.get("release_year")
+        print("RELEASEYEAR")
+    if (film_data.get("length") != "" and film_data.get("length") != None):
+        film.length = film_data.get("length")
+        print("LENGTH")
+    if (film_data.get("rating") != "" and film_data.get("rating") != None):
+        film.rating = film_data.get("rating")
+        print("RATING")
+
+    print(film.title, film.release_year, film.length, film.rating)
+
+    db.session.add(film)
+    db.session.commit()
+    return film_schema.dump(film)

@@ -3,11 +3,6 @@ from flask import Flask
 from api.config import config
 from api.routes import routes
 
-# app = Flask(__name__)
-# @app.route("/")
-# def say_hello():
-#     return  "<h1>Hello, Flask!</h1>"
-
 def create_app():
     app = Flask(__name__)
     app.config.from_object(config)

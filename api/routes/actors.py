@@ -19,6 +19,7 @@ def read_actor(actor_id):
     actor = Actor.query.get(actor_id)
     return actor_schema.dump(actor)
 
+# TOTEST ->{"first_name": "TEST1", "last_name": "TEST1LAST"}
 @actors_router.post('/')
 def create_actor():
     actor_data = request.json
@@ -34,7 +35,12 @@ def create_actor():
 
     return actor_schema.dump(actor)
 
+# TOTEST -> localhost:5000/api/actors/201 (if done create before)
 @actors_router.delete('/<actor_id>')
 def delete_actor(actor_id):
-    actor = Actor.query.delete(actor_id)
-    return actors_schema.dump(actor)
+    actor = Actor.query.get(actor_id)
+    db.session.delete(actor)
+    db.session.commit()
+    return actors_schema.dump("")
+
+# @actors_router.post('/<actor_id>')

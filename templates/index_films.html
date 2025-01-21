@@ -3,23 +3,27 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Paginated Actors</title>
+    <title>Paginated Films</title>
     <!-- Bootstrap CSS for styling the pagination and list elements -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="container mt-5">
-        <h2>Actors</h2>
+        <h2>Films</h2>
         <!-- List group for displaying each post in a styled list -->
         <ul class="list-group mb-4">
             <!-- Start looping through each post item provided to the template -->
-            {% for actor in items %}
+            {% for film in items %}
             <li class="list-group-item">
-                <!-- Display the title of the post -->
-                <h5>{{ actor.first_name }}</h5>
-                <!-- Display the content of the post -->
-                <p>{{ actor.last_name }}</p>
+                <!-- Display the title of the film -->
+                <h5>{{ film.title }}</h5>
+                <!-- Display release year of the film -->
+                <p>Release year: {{ film.release_year }}</p>
+                <!-- Display length of the film -->
+                <p>Length: {{ film.length }}</p>
+                <!-- Display rating of the film -->
+                <p>Rating: {{ film.rating }}</p>
             </li>
             {% endfor %} <!-- End of the loop -->
         </ul>
@@ -31,7 +35,7 @@
                 {% if pagination.has_prev %}
                 <li class="page-item">
                     <!-- If there is, create a link to the previous page -->
-                    <a class="page-link" href="/api/actors/home/?page={{ pagination.prev_num }}">Previous</a>
+                    <a class="page-link" href="/api/films/home/?page={{ pagination.prev_num }}">Previous</a>
                 </li>
                 {% else %}
                 <!-- If not, show a disabled 'Previous' button -->
@@ -45,7 +49,7 @@
                 <!-- Check if the current page is not the active page -->
                 {% if page_num != pagination.page %}
                 <!-- Create a clickable link for the page number -->
-                <li class="page-item"><a class="page-link" href="/api/actors/home/?page={{ page_num }}">{{ page_num }}</a></li>
+                <li class="page-item"><a class="page-link" href="/api/films/home/?page={{ page_num }}">{{ page_num }}</a></li>
                 {% else %}
                 <!-- Highlight the current page as active and not clickable -->
                 <li class="page-item active" aria-current="page">
@@ -62,7 +66,7 @@
                 {% if pagination.has_next %}
                 <li class="page-item">
                     <!-- If there is, create a link to the next page -->
-                    <a class="page-link" href="/api/actors/home/?page={{ pagination.next_num }}">Next</a>
+                    <a class="page-link" href="/api/films/home/?page={{ pagination.next_num }}">Next</a>
                 </li>
                 {% else %}
                 <!-- If not, show a disabled 'Next' button -->

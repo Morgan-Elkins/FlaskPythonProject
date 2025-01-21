@@ -100,3 +100,14 @@ localhost:5000/api/film_actors/get_films/1
 ```commandline
 localhost:5000/api/film_actors/get_actors/1
 ```
+------------------
+## Pagination
+Used code from [this website](https://devoriales.com/post/323/how-to-implement-pagination-in-your-flask-application) as a template to implement pagination
+### Actors
+```commandline
+http://localhost:5000/api/actors/home/
+```
+### Films
+```commandline
+http://localhost:5000/api/films/home/
+```

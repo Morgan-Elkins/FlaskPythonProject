@@ -68,4 +68,4 @@ def update_actor(actor_id):
 def home():
     page = request.args.get('page', 1, type=int)  # Default to page 1 if not specified
     actors = Actor.query.paginate(page=page, per_page=10, error_out=False)
-    return render_template('index.html', items=actors.items, pagination=actors)
+    return render_template('index_actors.html', items=actors.items, pagination=actors)

@@ -33,15 +33,15 @@ flask run
 Using Postman, each of the request can be tested.
 ### Actors
 #### Get all actors, using GET
-```commandline
+```URL
 localhost:5000/api/actors/
 ```
 #### Get specific actor by id (e.g. actor_id: 1), using GET
-```commandline
+```URL
 localhost:5000/api/actors/1
 ```
 #### Create a new actor by entering all info, using POST
-```commandline
+```URL
 localhost:5000/api/actors/
 ```
 ```JSON
@@ -49,28 +49,28 @@ localhost:5000/api/actors/
 "last_name": "LASTNAMETEST"}
 ```
 #### Update the information of an actor by adding some or all information and ID, using PATCH
-```commandline
+```URL
 localhost:5000/api/actors/101
 ```
 ```json
 {"first_name": "UPDATEDNAMETEST"}
 ```
 #### Delete an actor by ID, using DELETE
-```commandline
+```URL
 localhost:5000/api/actors/101
 ```
 --------------------
 ### Films
 #### Get all films, using GET
-```commandline
+```URL
 localhost:5000/api/films/
 ```
 #### Get specific film by id , using GET
-```commandline
+```URL
 localhost:5000/api/films/1
 ```
 #### Create a new film by entering all info, using POST
-```commandline
+```URL
 localhost:5000/api/films/
 ```
 ```JSON
@@ -87,35 +87,40 @@ localhost:5000/api/films/1001
 {"title": "TESTFILMNAME2", "length": 120, "rating": "PG-13"}
 ```
 #### Delete an film by ID, using DELETE
-```commandline
+```URL
 localhost:5000/api/films/1001
 ```
 ----------
 ### Film Actor Relationship
 #### Get all the films information that contain a specific actor by ID, using GET
-```commandline
+```URL
 localhost:5000/api/film_actors/get_films/1
 ```
 #### Get all the actors information who are part of the specific film by ID, using GET
-```commandline
+```URL
 localhost:5000/api/film_actors/get_actors/1
 ```
 ------------------
 ## Pagination
 Used code from [this website](https://devoriales.com/post/323/how-to-implement-pagination-in-your-flask-application) as a template to implement pagination
 ### Actors
-```commandline
+```URL
 http://localhost:5000/api/actors/home/
 ```
 ### Films
-```commandline
+```URL
 http://localhost:5000/api/films/home/
 ```
 ### Get actors by film_id
-```commandline
+```URL
 http://localhost:5000/api/film_actors/home_get_actors/1
 ```
 ### Get films by actor_id
-```commandline
+```URL
 http://localhost:5000/api/film_actors/home_get_films/1
+```
+------------------
+## Patching association between film and actor
+```URL
+http://localhost:5000/api/film_actors/link_actor_to_film/1,1003
 ```

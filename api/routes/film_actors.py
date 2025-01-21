@@ -48,3 +48,27 @@ def home_actors(film_id):
             return f"The film id: {film_id} is invalid", 404
     actors = films.actor.paginate(page=page, per_page=10, error_out=False)
     return render_template('index_actors.html', items=actors.items, pagination=actors)
+
+@film_actors_router.patch('/link_actor_to_film/<actor_id>,<film_id>')
+def link_actor_to_film(actor_id, film_id):
+    # Check that actor not already linked with film
+    film = Film.query.get(film_id)
+    if film == None:
+            return f"The film id: {film_id} is invalid", 404
+
+    actor = Actor.query.get(actor_id)
+    if actor == None:
+            return f"The actor id: {actor_id} is invalid", 404
+
+    actor_in_film = any(x.actor_id == int(actor_id) for x in film.actor )
+
+    # If actor already linked then don't update
+    if (actor_in_film):
+        return actors_schema.dump(film.actor)
+    else:
+        film.actor.append(actor)
+        db.session.commit()
+        return actors_schema.dump(film.actor)
+
+
+

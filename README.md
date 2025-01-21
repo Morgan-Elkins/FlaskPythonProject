@@ -50,14 +50,14 @@ localhost:5000/api/actors/
 ```
 #### Update the information of an actor by adding some or all information and ID, using PATCH
 ```URL
-localhost:5000/api/actors/101
+localhost:5000/api/actors/201
 ```
 ```json
 {"first_name": "UPDATEDNAMETEST"}
 ```
 #### Delete an actor by ID, using DELETE
 ```URL
-localhost:5000/api/actors/101
+localhost:5000/api/actors/201
 ```
 --------------------
 ### Films
@@ -120,7 +120,7 @@ http://localhost:5000/api/film_actors/home_get_actors/1
 http://localhost:5000/api/film_actors/home_get_films/1
 ```
 ------------------
-## Patching association between film and actor
+## Linking association between film and actor
 ```URL
 http://localhost:5000/api/film_actors/link_actor_to_film/1,1003
 ```

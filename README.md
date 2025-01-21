@@ -111,3 +111,11 @@ http://localhost:5000/api/actors/home/
 ```commandline
 http://localhost:5000/api/films/home/
 ```
+### Get actors by film_id
+```commandline
+http://localhost:5000/api/film_actors/home_get_actors/1
+```
+### Get films by actor_id
+```commandline
+http://localhost:5000/api/film_actors/home_get_films/1
+```

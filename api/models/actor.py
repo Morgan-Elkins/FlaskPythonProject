@@ -8,4 +8,4 @@ class Actor(db.Model):
     first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
 
-    film = db.relationship('Film', secondary='film_actor', back_populates='actor')
+    film = db.relationship('Film', secondary='film_actor', back_populates='actor', lazy = 'dynamic')

@@ -10,4 +10,4 @@ class Film(db.Model):
     length = db.Column(db.Integer, nullable=False)
     rating = db.Column(db.String(255), nullable=False)
 
-    actor = db.relationship('Actor', secondary='film_actor', back_populates='film')
+    actor = db.relationship('Actor', secondary='film_actor', back_populates='film', lazy = 'dynamic')

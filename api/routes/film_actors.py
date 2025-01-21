@@ -10,13 +10,6 @@ from api.schemas.film import films_schema
 #Create module to insert into flask app
 film_actors_router = Blueprint('film_actors', __name__, url_prefix='/film_actors')
 
-# TODO remove
-@film_actors_router.get('/')
-def read_all_film_actors():
-    filaActors = Actor.query.all()
-    print("HELLO")
-    return actors_schema.dump(filaActors)
-
 # GET requests to return all films be an actor
 # localhost:5000/api/film_actors/get_films/5
 @film_actors_router.get('/get_films/<actor_id>')

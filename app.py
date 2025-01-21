@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, render_template
 
 from api.config import config
 from api.routes import routes
@@ -14,6 +14,11 @@ def create_app():
     ma.init_app(ma)
 
     app.register_blueprint(routes)
+
+    @app.route('/')
+    def home():
+        # page = request.args.get('page', 1, type=int)  # Default to page 1 if not specified
+        return render_template('index.html')
 
     return app
 
